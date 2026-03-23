@@ -4,15 +4,16 @@ use std::process;
 
 fn main(){
     loop{
-        println!("Yo ! Écrivez 2 arg et 1 oppérateur");
+        println!("\nYo ! Écrivez 2 arg et 1 oppérateur");
         println!("En premier l'operateur");
         let mut tmp = String::new();
         stdin().read_line(&mut tmp).expect("nop kys nigga");
         let tmp = tmp.trim();
 
-        let op : i32= tmp.parse().unwrap();
+        let operators = ["*","/","+","-","%"];
 
         if tmp == "stop" {
+            println!("===================================\nBye bye !");
             process::exit(0x0100);
         }
 
@@ -30,7 +31,13 @@ fn main(){
 
         let arg2_ : u32= arg2.parse().unwrap();
 
-        println!("op = {}, arg1 = {} et arg2 = {}",tmp,arg1,arg2);
+        println!("=================================\nop = {}, arg1 = {} et arg2 = {}\n=============================",tmp,arg1,arg2);
+
+        if ! operators.contains(&tmp)  {
+            println!("NIQUE TA MÈRE(c'est ni + ni - ni * ni / ni %) + ratio + l looser (sigkill)");
+            process::exit(0x0100);
+
+        }
         
         match tmp {
             "+" => { println!("{}",arg1_ + arg2_) },
@@ -38,11 +45,13 @@ fn main(){
             "/" => { if arg2_ != 0 {
                        println!("{}",arg1_ / arg2_) ;
                     } else {
-                        println!("division par 0");
+                        println!("division par 0, c'est impossible");
                     }}
             "*" => { println!("{}",arg1_ * arg2_)},
-            _ => println!("chef????? wtf ?????")
+            _ => println!("chef????? wtf ?????\n====================")
         }
 
     }
 }
+
+
